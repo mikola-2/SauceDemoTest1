@@ -18,7 +18,7 @@ public class LoginPageTest extends BaseTest {
     public void inputValidData() {
         log.info("Input correct username and password.");
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login("standard_user", "secret_sauceXXX");
         assertTrue(inventoryPage.isProductsDisplayed(), "Couldn't log in to the site");
 
     }
