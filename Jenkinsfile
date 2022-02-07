@@ -8,13 +8,14 @@ pipeline {
 
     parameters{
         choice(choices: ['LoginPageTest', 'BurgerMenuTest', 'ProductsCriticalPathTest', 'SortTest'], name: 'TEST_NAME')
+        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
     }
 
     stages {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-                git 'https://github.com/mikola-2/SauceDemoTest1.git'
+                git branch: "${params.BRANCH}", url: 'https://github.com/mikola-2/SauceDemoTest1.git'
 
                 // Run Maven on a Unix agent.
                 // sh "mvn -Dmaven.test.failure.ignore=true clean package"
