@@ -6,6 +6,7 @@ pipeline {
         maven "M3"
     }
 
+
     parameters{
         choice(choices: ['LoginPageTest', 'BurgerMenuTest', 'ProductsCriticalPathTest', 'SortTest'], name: 'TEST_NAME')
         gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
