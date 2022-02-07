@@ -6,7 +6,9 @@ pipeline {
         maven "M3"
     }
 
-    properties([parameters([choice(choices: ['LoginPageTest', 'BurgerMenuTest', 'ProductsCriticalPathTest', 'SortTest'], name: 'TEST_NAME')])])
+    parameters{
+        choice(choices: ['LoginPageTest', 'BurgerMenuTest', 'ProductsCriticalPathTest', 'SortTest'], name: 'TEST_NAME')
+    }
 
     stages {
         stage('Build') {
