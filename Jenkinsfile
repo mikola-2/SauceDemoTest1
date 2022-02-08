@@ -15,13 +15,14 @@ pipeline {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-                git branch: "${params.BRANCH}", url: 'https://github.com/mikola-2/SauceDemoTest1.git'
+                // git branch: "${params.BRANCH}", url: 'https://github.com/mikola-2/SauceDemoTest1.git'
+                git 'https://github.com/mikola-2/SauceDemoTest1.git'
 
                 // Run Maven on a Unix agent.
                 // sh "mvn -Dmaven.test.failure.ignore=true clean package"
 
                 // To run Maven on a Windows agent, use
-                bat "mvn -Dmaven.test.failure.ignore=true clean test -Dtest=${TEST_NAME}"
+                bat "mvn -Dmaven.test.failure.ignore=true clean test"
             }
 
             post {
