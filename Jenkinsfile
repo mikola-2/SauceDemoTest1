@@ -6,11 +6,10 @@ pipeline {
         maven "M3"
     }
 
-
-    parameters{
-        choice(choices: ['LoginPageTest', 'BurgerMenuTest', 'ProductsCriticalPathTest', 'SortTest'], name: 'TEST_NAME')
-        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
-    }
+//     parameters{
+//         choice(choices: ['LoginPageTest', 'BurgerMenuTest', 'ProductsCriticalPathTest', 'SortTest'], name: 'TEST_NAME')
+//         gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+//     }
 
     stages {
         stage('Build') {
@@ -30,7 +29,6 @@ pipeline {
                 // failed, record the test results and archive the jar file.
                 success {
                     junit '**/target/surefire-reports/TEST-*.xml'
-
                 }
             }
         }
