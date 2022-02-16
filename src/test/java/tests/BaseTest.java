@@ -5,10 +5,10 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
+import org.testng.annotations.*;
 import pages.CartPage;
 import pages.InventoryPage;
 import pages.LoginPage;
@@ -24,9 +24,26 @@ public class BaseTest {
     CartPage cartPage;
     SauceLabsPage sauceLabsPage;
 
+    @Parameters({"browser"}) //параметр из файла regression_multi_browser.xml (для запуска тестов в нескольких браузерах параллельно)
     @BeforeMethod(description = "Setup and start browser")
-    public void setup(ITestContext context) {
+    public void setup(@Optional("chrome") String browser, ITestContext context) {
         log.info("Setup settings");
+        switch (browser) {
+            case "chrome":
+                WebDriverManager.chromedriver().setup();
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--start-maximized");
+                driver = new ChromeDriver(options);
+                break;
+            case "firefox":
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver();
+                break;
+            case "edge":
+                WebDriverManager.edgedriver().setup();
+                driver = new ChromeDriver();
+                break;
+        }
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");

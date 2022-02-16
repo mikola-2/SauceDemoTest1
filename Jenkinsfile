@@ -22,7 +22,9 @@ pipeline {
                 // sh "mvn -Dmaven.test.failure.ignore=true clean package"
 
                 // To run Maven on a Windows agent, use
-                bat "mvn -Dmaven.test.failure.ignore=true clean test -Dtest=${TEST_NAME}"
+                bat "mvn clean test -DsuiteXmlFiles='src/test/resources/smoke.chrome.xml'"
+                bat "mvn clean test -DsuiteXmlFiles='src/test/resources/smoke.firefox.xml'"
+                bat "mvn clean test -DsuiteXmlFiles='src/test/resources/smoke.edge.xml'"
             }
 
             post {
@@ -30,7 +32,6 @@ pipeline {
                 // failed, record the test results and archive the jar file.
                 success {
                     junit '**/target/surefire-reports/TEST-*.xml'
-
                 }
             }
         }

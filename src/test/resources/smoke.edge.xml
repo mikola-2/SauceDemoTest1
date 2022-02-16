@@ -3,18 +3,21 @@
 <suite thread-count="3" name="Test suite" parallel="tests">
 
     <test name="test 1">
+        <parameter name="browser" value="edge"/>
         <classes>
             <class name="tests.LoginPageTest"/>
         </classes>
     </test> <!-- Test -->
 
     <test name="test 2">
+        <parameter name="browser" value="edge"/>
         <classes>
             <class name="tests.ProductsCriticalPathTest"/>
             <class name="tests.BurgerMenuTest"/>
         </classes>
     </test> <!-- Test -->
     <test name="test 3">
+        <parameter name="browser" value="edge"/>
         <classes>
             <class name="tests.SortTest"/>
         </classes>
