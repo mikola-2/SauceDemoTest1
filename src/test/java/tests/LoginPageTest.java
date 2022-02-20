@@ -17,13 +17,10 @@ public class LoginPageTest extends BaseTest {
     @TmsLink("")
     @Test (description = "Input correct username and password.")
     public void inputValidData() {
-//        log.info("Input correct username and password.");
-//        loginPage.open();
-//        loginPage.login("standard_user", "secret_sauce");
-//        assertTrue(inventoryPage.isProductsDisplayed(), "Couldn't log in to the site");
-
-        driver.get("https://www.google.com/search?q=what+is+my+ip");
-        Assert.assertTrue(false);
+        log.info("Input correct username and password.");
+        loginPage.open();
+        loginPage.login("standard_user", "secret_sauce");
+        assertTrue(inventoryPage.isProductsDisplayed(), "Couldn't log in to the site");
     }
 
     @Test (description = "Input correct username and empty password.")
