@@ -22,7 +22,7 @@ public class LoginPageTest extends BaseTest {
 //        loginPage.login("standard_user", "secret_sauce");
 //        assertTrue(inventoryPage.isProductsDisplayed(), "Couldn't log in to the site");
 
-        driver.get("https://www.google.com/search?q=my+ip&oq=my+ip&aqs=chrome.0.69i59j0i512l6j69i60.1775j0j7&sourceid=chrome&ie=UTF-8");
+        driver.get("https://www.google.com/search?q=what+is+my+ip");
         Assert.assertTrue(false);
     }
 
